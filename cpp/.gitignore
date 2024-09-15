@@ -1,0 +1,8 @@
+CMakeUserPresets.json
+/builddir/
+/.conan/
+/LLVM-ET-Arm-18.1.3-Linux-AArch64.tar.xz
+/LLVM-ET-Arm-18.1.3-Linux-AArch64/
+/.venv/
+/.cache/
+/compile_commands.json

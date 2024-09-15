@@ -1,10 +1,17 @@
-target extended-remote :3333
+# Point GDB to the sources used for the core library (so we can step through
+# them if necessary)
+set substitute-path /rustc/eeb90cda1969383f56a2637cbd3037bdf598841c /home/edtwardy/.rustup/toolchains/stable-aarch64-unknown-linux-gnu/lib/rustlib/src/rust
+
+target extended-remote :3334
 
 # print demangled symbols
 set print asm-demangle on
 
 # set backtrace limit to not have infinite backtrace loops
 set backtrace limit 32
+
+# Reset the target
+monitor reset halt
 
 # detect unhandled exceptions, hard faults and panics
 break DefaultHandler

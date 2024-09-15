@@ -19,9 +19,9 @@ fn main() {
     // Put `memory.x` in our output directory and ensure it's
     // on the linker search path.
     let out = &PathBuf::from(env::var_os("OUT_DIR").unwrap());
-    File::create(out.join("memory.x"))
+    File::create(out.join("stm32mp15xx_m4.ld"))
         .unwrap()
-        .write_all(include_bytes!("memory.x"))
+        .write_all(include_bytes!("stm32mp15xx_m4.ld"))
         .unwrap();
     println!("cargo:rustc-link-search={}", out.display());
 
@@ -29,7 +29,7 @@ fn main() {
     // any file in the project changes. By specifying `memory.x`
     // here, we ensure the build script is only re-run when
     // `memory.x` is changed.
-    println!("cargo:rerun-if-changed=memory.x");
+    println!("cargo:rerun-if-changed=stm32mp15xx_m4.ld");
 
     // Specify linker arguments.
 
@@ -39,5 +39,5 @@ fn main() {
     println!("cargo:rustc-link-arg=--nmagic");
 
     // Set the linker script to the one provided by cortex-m-rt.
-    println!("cargo:rustc-link-arg=-Tlink.x");
+    println!("cargo:rustc-link-arg=-Tstm32mp15xx_m4.ld");
 }
