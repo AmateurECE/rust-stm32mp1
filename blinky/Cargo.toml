@@ -2,7 +2,7 @@
 authors = ["Ethan D. Twardy <ethan.twardy@gmail.com>"]
 edition = "2021"
 readme = "README.md"
-name = "rust-stm32mp1"
+name = "blinky"
 version = "0.1.0"
 
 [dependencies]
