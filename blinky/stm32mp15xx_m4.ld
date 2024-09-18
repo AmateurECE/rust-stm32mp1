@@ -46,11 +46,13 @@ PROVIDE(UsageFault = DefaultHandler);
 PROVIDE(SecureFault = DefaultHandler);
 PROVIDE(SVCall = DefaultHandler);
 PROVIDE(DebugMonitor = DefaultHandler);
-PROVIDE(PendSV = DefaultHandler);
-PROVIDE(SysTick = DefaultHandler);
 
 PROVIDE(DefaultHandler = DefaultHandler_);
 PROVIDE(HardFault = HardFault_);
+
+/* ThreadX */
+PROVIDE(PendSV = __tx_PendSVHandler);
+PROVIDE(SysTick = __tx_SysTickHandler);
 
 /* # Interrupt vectors */
 EXTERN(__INTERRUPTS); /* `static` variable similar to `__EXCEPTIONS` */
@@ -68,6 +70,8 @@ SECTIONS
   /* ### Vector table */
   .vector_table :
   {
+    __vector_table = .;
+
     /* Initial Stack Pointer (SP) value */
     LONG(_stack_start);
 
